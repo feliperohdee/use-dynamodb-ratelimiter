@@ -26,7 +26,7 @@ namespace RateLimiter {
 	export type ConstructorOptions = {
 		accessKeyId: string;
 		createTable?: boolean;
-		getConfig: (keys: { id: string; namespace: string }) => Config;
+		getConfig: GetConfig;
 		region: string;
 		secretAccessKey: string;
 		tableName: string;
@@ -47,12 +47,13 @@ namespace RateLimiter {
 		seconds: number;
 	};
 
+	export type GetConfig = (keys: { id: string; namespace: string }) => RateLimiter.Config | Promise<RateLimiter.Config>;
 	export type Rule = z.infer<typeof rule>;
 }
 
 export class RateLimiter {
 	public db: Dynamodb<RateLimiter.Rule>;
-	public getConfig: (keys: { id: string; namespace: string }) => RateLimiter.Config;
+	public getConfig: RateLimiter.GetConfig;
 
 	constructor(options: RateLimiter.ConstructorOptions) {
 		const db = new Dynamodb<RateLimiter.Rule>({
@@ -87,7 +88,7 @@ export class RateLimiter {
 			}
 		});
 
-		const config = this.getConfig({
+		const config = await this.getConfig({
 			id: args.id,
 			namespace: args.namespace
 		});

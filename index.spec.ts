@@ -18,7 +18,7 @@ describe('/index', () => {
 	});
 
 	beforeEach(() => {
-		getConfig = vi.fn(() => {
+		getConfig = vi.fn(async () => {
 			return {
 				limit: 5,
 				seconds: 3600
@@ -136,7 +136,7 @@ describe('/index', () => {
 		});
 
 		it('should reset limit after expiration', async () => {
-			getConfig = vi.fn(() => {
+			getConfig = vi.fn(async () => {
 				return {
 					limit: 2,
 					seconds: 1

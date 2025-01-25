@@ -36,7 +36,7 @@ const rateLimiter = new RateLimiter({
 	region: process.env.AWS_REGION,
 	tableName: 'YOUR_TABLE_NAME',
 	createTable: true, // Optional: automatically create DynamoDB table
-	getConfig: ({ id, namespace }) => ({
+	getConfig: async ({ id, namespace }) => ({
 		limit: 100, // Number of requests allowed
 		seconds: 3600 // Time window in seconds
 	})
@@ -134,7 +134,7 @@ type ConstructorOptions = {
 	region: string;
 	tableName: string;
 	createTable?: boolean;
-	getConfig: (keys: { id: string; namespace: string }) => Config;
+	getConfig: (keys: { id: string; namespace: string }) => Config | Promise<Config>;
 };
 
 type Config = {
