@@ -1,6 +1,6 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Mock, vi } from 'vitest';
 
-import { RateLimiter } from './index';
+import RateLimiter from './index';
 
 describe('/index', () => {
 	let getConfig: Mock;

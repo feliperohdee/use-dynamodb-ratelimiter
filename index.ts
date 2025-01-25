@@ -51,7 +51,7 @@ namespace RateLimiter {
 	export type Rule = z.infer<typeof rule>;
 }
 
-export class RateLimiter {
+class RateLimiter {
 	public db: Dynamodb<RateLimiter.Rule>;
 	public getConfig: RateLimiter.GetConfig;
 
@@ -170,3 +170,5 @@ export class RateLimiter {
 		};
 	}
 }
+
+export default RateLimiter;

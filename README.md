@@ -28,7 +28,7 @@ yarn add use-dynamodb-ratelimiter
 ### Initialize the Rate Limiter
 
 ```typescript
-import { RateLimiter } from 'use-dynamodb-ratelimiter';
+import RateLimiter from 'use-dynamodb-ratelimiter';
 
 const rateLimiter = new RateLimiter({
 	accessKeyId: process.env.AWS_ACCESS_KEY_ID,
