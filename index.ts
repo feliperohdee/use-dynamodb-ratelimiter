@@ -26,6 +26,7 @@ namespace RateLimiter {
 	export type ConstructorOptions = {
 		accessKeyId: string;
 		createTable?: boolean;
+		endpoint?: string;
 		getConfig: GetConfig;
 		region: string;
 		secretAccessKey: string;
@@ -58,6 +59,7 @@ class RateLimiter {
 	constructor(options: RateLimiter.ConstructorOptions) {
 		const db = new Dynamodb<RateLimiter.Rule>({
 			accessKeyId: options.accessKeyId,
+			endpoint: options.endpoint,
 			region: options.region,
 			schema: {
 				partition: 'namespace',

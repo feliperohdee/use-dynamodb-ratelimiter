@@ -1,5 +1,6 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Mock, vi } from 'vitest';
 
+import { ENDPOINT } from './constants';
 import RateLimiter from './index';
 
 describe('/index', () => {
@@ -9,6 +10,7 @@ describe('/index', () => {
 	beforeAll(() => {
 		rateLimiter = new RateLimiter({
 			accessKeyId: process.env.AWS_ACCESS_KEY || '',
+			endpoint: ENDPOINT,
 			createTable: true,
 			getConfig: vi.fn(),
 			region: process.env.AWS_REGION || '',
@@ -27,6 +29,7 @@ describe('/index', () => {
 
 		rateLimiter = new RateLimiter({
 			accessKeyId: process.env.AWS_ACCESS_KEY || '',
+			endpoint: ENDPOINT,
 			createTable: true,
 			getConfig,
 			region: process.env.AWS_REGION || '',
