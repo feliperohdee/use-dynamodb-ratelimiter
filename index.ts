@@ -1,11 +1,13 @@
 import Dynamodb from 'use-dynamodb';
 import z from 'zod';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const checkInput = z.object({
 	id: z.string(),
 	namespace: z.string()
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const rule = z.object({
 	__createdAt: z
 		.string()
