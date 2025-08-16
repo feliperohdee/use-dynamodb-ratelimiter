@@ -9,12 +9,12 @@ describe('/index', () => {
 
 	beforeAll(() => {
 		rateLimiter = new RateLimiter({
-			accessKeyId: process.env.AWS_ACCESS_KEY || '',
+			accessKeyId: 'test',
 			endpoint: ENDPOINT,
 			createTable: true,
 			getConfig: vi.fn(),
-			region: process.env.AWS_REGION || '',
-			secretAccessKey: process.env.AWS_SECRET_KEY || '',
+			region: 'test',
+			secretAccessKey: 'test',
 			tableName: 'use-dynamodb-ratelimiter-spec'
 		});
 	});
@@ -28,12 +28,12 @@ describe('/index', () => {
 		});
 
 		rateLimiter = new RateLimiter({
-			accessKeyId: process.env.AWS_ACCESS_KEY || '',
+			accessKeyId: 'test',
 			endpoint: ENDPOINT,
 			createTable: true,
 			getConfig,
-			region: process.env.AWS_REGION || '',
-			secretAccessKey: process.env.AWS_SECRET_KEY || '',
+			region: 'test',
+			secretAccessKey: 'test',
 			tableName: 'use-dynamodb-ratelimiter-spec'
 		});
 	});
@@ -148,11 +148,12 @@ describe('/index', () => {
 
 			// Create rate limiter with short duration
 			const shortLimiter = new RateLimiter({
-				accessKeyId: process.env.AWS_ACCESS_KEY || '',
+				accessKeyId: 'test',
 				createTable: true,
+				endpoint: ENDPOINT,
 				getConfig,
-				region: process.env.AWS_REGION || '',
-				secretAccessKey: process.env.AWS_SECRET_KEY || '',
+				region: 'test',
+				secretAccessKey: 'test',
 				tableName: 'use-dynamodb-ratelimiter-spec'
 			});
 
