@@ -9,18 +9,16 @@ const checkInput = z.object({
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const rule = z.object({
-	__createdAt: z
-		.string()
-		.datetime()
-		.default(() => new Date().toISOString()),
-	__updatedAt: z
-		.string()
-		.datetime()
-		.default(() => new Date().toISOString()),
+	__createdAt: z.iso.datetime().default(() => {
+		return new Date().toISOString();
+	}),
+	__updatedAt: z.iso.datetime().default(() => {
+		return new Date().toISOString();
+	}),
 	count: z.number(),
 	id: z.string(),
 	namespace: z.string(),
-	resetAt: z.string().datetime(),
+	resetAt: z.iso.datetime(),
 	ttl: z.number()
 });
 

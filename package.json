@@ -41,5 +41,5 @@
 		"test:coverage": "rm -rf coverage && yarn vitest --fileParallelism=false --coverage --run",
 		"test:watch": "yarn vitest --fileParallelism=false"
 	},
-	"version": "1.0.9"
+	"version": "1.0.10"
 }
